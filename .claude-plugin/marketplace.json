@@ -1,0 +1,5 @@
+{
+  "name": "cc-inline-images-mod",
+  "owner": { "name": "Sergio Ghisler" },
+  "plugins": [{ "name": "inline-images", "source": "./" }]
+}

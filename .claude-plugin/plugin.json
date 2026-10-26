@@ -1,0 +1,5 @@
+{
+  "name": "inline-images",
+  "version": "0.1.0",
+  "description": "Shows the images Claude's tools return, and pasted images, inline in the conversation"
+}
