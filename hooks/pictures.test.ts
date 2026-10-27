@@ -1,6 +1,6 @@
 import { expect, test } from 'claude-code/testing'
 
-import { cellsFor, imagesIn, pasteMarkers, pngSize } from './pictures'
+import { cellsFor, fitIn, imagesIn, pasteMarkers, pngSize } from './pictures'
 
 const PNG_1x1 = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=='
 
@@ -34,6 +34,11 @@ test('a picture keeps its shape within the limits', async () => {
   expect(cellsFor({ width: 1200, height: 600 }, 120)).toEqual({ columns: 56, rows: 14 })
   expect(cellsFor({ width: 600, height: 1200 }, 120)).toEqual({ columns: 16, rows: 16 })
   expect(cellsFor({ width: 1200, height: 600 }, 30)).toEqual({ columns: 30, rows: 8 })
+})
+
+test('an enlarged picture fills the room it is given, keeping its shape', async () => {
+  expect(fitIn({ width: 1200, height: 600 }, { columns: 100, rows: 40 })).toEqual({ columns: 100, rows: 25 })
+  expect(fitIn({ width: 600, height: 1200 }, { columns: 100, rows: 40 })).toEqual({ columns: 40, rows: 40 })
 })
 
 test('paste markers are read once each', async () => {

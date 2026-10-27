@@ -1,6 +1,7 @@
 # inline-images
 
 A Claude Code mod that draws images where they live in the conversation: under the tool call that returned them, or under the prompt you pasted them into.
+Hover an image and click **⤢ Enlarge** to see it over the chat.
 
 ![Images drawn inline in a Claude Code session](docs/demo.png)
 

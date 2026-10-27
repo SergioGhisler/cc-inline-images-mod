@@ -62,6 +62,17 @@ export function cellsFor(picture: { width: number; height: number }, viewportCol
   return { columns: Math.min(columns, 255), rows: Math.min(rows, 255) }
 }
 
+export function fitIn(picture: { width: number; height: number }, room: Cells): Cells {
+  const rowsPerColumn = (picture.height / picture.width) * CELL_ASPECT
+  let columns = Math.max(1, Math.min(room.columns, 255))
+  let rows = Math.round(columns * rowsPerColumn)
+  if (rows > room.rows) {
+    rows = room.rows
+    columns = Math.round(rows / rowsPerColumn)
+  }
+  return { columns: Math.max(1, Math.min(columns, 255)), rows: Math.max(1, Math.min(rows, 255)) }
+}
+
 export function pasteMarkers(text: string): number[] {
   return [...new Set([...text.matchAll(/\[Image #(\d+)\]/g)].map(match => Number(match[1])))]
 }
